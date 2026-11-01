@@ -16,7 +16,18 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Check staged parts
+        id: parts
+        shell: bash
+        run: |
+          if compgen -G 'dist_parts/part*.b64' > /dev/null; then
+            echo "present=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "present=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Rebuild UnityPackage
+        if: steps.parts.outputs.present == 'true'
         shell: bash
         run: |
           set -euo pipefail
@@ -25,6 +36,7 @@ jobs:
           tar -xzf dist/nekoneko_quest_converter_v1.0.0.unitypackage -C .extract
 
       - name: Extract Unity source
+        if: steps.parts.outputs.present == 'true'
         shell: bash
         run: |
           set -euo pipefail
@@ -61,6 +73,7 @@ jobs:
           PY
 
       - name: Verify package and source
+        if: steps.parts.outputs.present == 'true'
         shell: bash
         run: |
           set -euo pipefail
@@ -73,6 +86,7 @@ jobs:
           sha256sum dist/nekoneko_quest_converter_v1.0.0.unitypackage
 
       - name: Commit published files
+        if: steps.parts.outputs.present == 'true'
         shell: bash
         run: |
           set -euo pipefail
