@@ -1,0 +1,54 @@
+name: Build Release
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - "Packages/com.nekoneko.nn-quest-converter/**"
+      - ".github/workflows/release.yml"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      packagePath: Packages/com.nekoneko.nn-quest-converter
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Get Version
+        id: version
+        shell: bash
+        run: |
+          VERSION=$(jq -r '.version' "$packagePath/package.json")
+          echo "value=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "zipFile=com.nekoneko.nn-quest-converter-$VERSION.zip" >> "$GITHUB_ENV"
+          echo "unityPackage=com.nekoneko.nn-quest-converter-$VERSION.unitypackage" >> "$GITHUB_ENV"
+
+      - name: Create Package Zip
+        working-directory: "${{ env.packagePath }}"
+        run: zip -r "${{ github.workspace }}/${{ env.zipFile }}" .
+
+      - name: Track Package Meta Files
+        run: find "${{ env.packagePath }}/" -name '*.meta' >> metaList
+
+      - name: Create UnityPackage
+        uses: pCYSl5EDgo/create-unitypackage@v1.2.3
+        with:
+          package-path: ${{ env.unityPackage }}
+          include-files: metaList
+
+      - name: Make Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            ${{ env.zipFile }}
+            ${{ env.unityPackage }}
+            ${{ env.packagePath }}/package.json
+          tag_name: ${{ steps.version.outputs.value }}
+          name: NN - Quest Converter v${{ steps.version.outputs.value }}
+          overwrite_files: true

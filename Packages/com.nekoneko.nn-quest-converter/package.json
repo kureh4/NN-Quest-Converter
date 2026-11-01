@@ -1,0 +1,26 @@
+{
+  "name": "com.nekoneko.nn-quest-converter",
+  "displayName": "NN - Quest Converter",
+  "version": "1.0.0",
+  "unity": "2022.3",
+  "description": "PC向けVRChatアバターを、できるだけ見た目や揺れものを残しながらQuest / Android向けへ変換するUnity Editorツールです。",
+  "author": {
+    "name": "ねこねこ",
+    "url": "https://github.com/kureh4/NN-Quest-Converter"
+  },
+  "keywords": [
+    "vrchat",
+    "avatar",
+    "quest",
+    "android",
+    "converter",
+    "editor"
+  ],
+  "vpmDependencies": {
+    "com.vrchat.avatars": ">=3.5.0 <4.0.0"
+  },
+  "legacyFolders": {
+    "Assets\\nekoneko\\NN - Quest Converter\\Editor": "dec3a927a3864f83b5768b4f1c825adc",
+    "Assets\\nekoneko\\QuestConverter\\Editor": "dec3a927a3864f83b5768b4f1c825adc"
+  }
+}
