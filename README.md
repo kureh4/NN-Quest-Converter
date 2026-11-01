@@ -40,3 +40,14 @@ Import後、ツール本体は最終的に次の場所へ配置されます。
 `Assets/nekoneko/NN - Quest Converter/Editor/`
 
 旧版の `Assets/nekoneko/QuestConverter` が存在する場合は、ツールの移行処理によってフォルダ自体を名称変更します。
+
+
+## VCC / VPM
+
+VCCへ追加する場合はこちら：
+
+https://kureh4.github.io/NN-Quest-Converter/add-vcc.html
+
+VPM Repository URL：
+
+`https://kureh4.github.io/NN-Quest-Converter/index.json`
