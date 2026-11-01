@@ -4,21 +4,39 @@ VRChat向けPCアバターを、できるだけ見た目や揺れものを残し
 
 ## Version
 
-v1.0.0
+**v1.0.0**
 
-## Unity
+## 対応環境
 
 - Unity 2022.3
 - VRChat Avatar SDK
 
-## メニュー
+## 導入
 
-`ねこねこツール > NN - Quest Converter`
+[UnityPackageをダウンロード](./dist/nekoneko_quest_converter_v1.0.0.unitypackage)
 
-## インストール
+Unity上部の `Assets → Import Package → Custom Package...` からUnityPackageをImportしてください。
 
-`Releases` または `dist/nekoneko_quest_converter_v1.0.0.unitypackage` をUnityへImportしてください。
+詳しい手順は [導入方法.txt](./dist/導入方法.txt) を確認してください。
+
+## 開き方
+
+`ねこねこツール → NN - Quest Converter`
+
+## ソースコード
+
+`Assets/nekoneko/NN - Quest Converter/Editor/`
+
+- `NekoQuestAnalyzer.cs`
+- `NekoQuestConverterWindow.cs`
+- `NekoQuestData.cs`
+- `NekoQuestGenerator.cs`
+- `NekoQuestSdkBridge.cs`
 
 ## Unity内の配置
 
-Import後、ツール本体は `Assets/nekoneko/NN - Quest Converter/Editor/` へ移行されます。
+Import後、ツール本体は最終的に次の場所へ配置されます。
+
+`Assets/nekoneko/NN - Quest Converter/Editor/`
+
+旧版の `Assets/nekoneko/QuestConverter` が存在する場合は、ツールの移行処理によってフォルダ自体を名称変更します。
