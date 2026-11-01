@@ -1,0 +1,18 @@
+NN - Quest Converter v1.0.0　導入方法
+
+1. Unity上部の「Assets」→「Import Package」→「Custom Package...」を開いてください。
+2. 「nekoneko_quest_converter_v1.0.0.unitypackage」を選択してください。
+3. 表示された一覧をすべて選択したまま「Import」を押してください。
+4. スクリプトの読み込みが終わると、旧「Assets/nekoneko/QuestConverter」が
+   「Assets/nekoneko/NN - Quest Converter」へフォルダごと名称変更されます。
+5. Unity上部の「ねこねこツール」→「NN - Quest Converter」を開いてください。
+
+【更新時】
+・旧QuestConverterフォルダを新規フォルダで置き換えず、AssetDatabase.MoveAssetで名称変更します。
+・v1.0.18で作られた「NN - Quest Converter」が既にある場合、Generated内のデータを残したまま統合してから移行します。
+・旧Generated内のアバターも削除しません。
+・最終的なツール本体は「Assets/nekoneko/NN - Quest Converter/Editor」です。
+
+【v1.0.0】
+・QuestConverter → NN - Quest Converter の更新方法を「新規作成」から「フォルダ自体の名称変更」へ修正しました。
+・上部メニューは「ねこねこツール → NN - Quest Converter」です。
